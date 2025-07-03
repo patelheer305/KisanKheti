@@ -45,11 +45,11 @@
     <meta name="description" content="Buy and sell used farm machinery at KisanKheti.">
     <meta name="keywords" content="farm machinery, used tractors, agriculture equipment">
     <title>KisanKheti - Buy Farm Machinery</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles (1).css">
 </head>
 <body>
     <header>
-        <img src="images/Logo.png" alt="KisanKheti Logo">
+        <img src="https://via.placeholder.com/200x50?text=KisanKheti+Logo" alt="KisanKheti Logo">
         <span class="title-text" data-translate="siteTitle">KisanKheti</span>
     </header>
     <nav class="main-nav">
@@ -74,7 +74,7 @@
                 <option value="tractor" data-translate="tractor">Tractor</option>
                 <option value="thresher" data-translate="thresher">Thresher</option>
                 <option value="rotavator" data-translate="rotavator">Rotavator</option>
-                <option value="seeddrill" data-translate="seeddrill">Seed Drill</option>
+                <option value="seed drill" data-translate="seedDrill">Seed Drill</option>
                 <option value="other" data-translate="other">Other</option>
             </select>
             <label for="filter-location" data-translate="locationLabel">Location:</label>
@@ -93,14 +93,57 @@
         </div>
     </section>
     <footer>
-        <p>© 2025 KisanKheti. All rights reserved as of 04:35 PM IST, June 30, 2025.</p>
+        <p>© 2025 KisanKheti. All rights reserved. </p>
         <a href="https://www.facebook.com/profile.php?id=61577718758610" target="_blank">Facebook</a>
         <a href="https://www.instagram.com/kisankheti.in?igsh=YmhhOG9iY3BzdDdu" target="_blank">Instagram</a>
         <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
     </footer>
 
     <script>
-        // Translation object
+        const machines = [
+            { 
+                type: "tractor", 
+                location: "Deesa, Gujarat", 
+                price: 150000, 
+                name: "Ford 3600",  
+                images: [
+                    "ford1.jpg",
+                    "ford2.jpg",
+                    "ford3.jpg"
+                ],
+                translations: {
+                    hi: { name: "फोर्ड 3600", location: "डीसा, गुजरात", price: "₹1,50,000" },
+                    gu: { name: "ફોર્ડ ૩૬૦૦", location: "ડીસા, ગુજરાત", price: "₹1,50,000" }
+                }
+            },
+            { 
+                type: "thresher", 
+                location: "Bhadthar,Jamakhambalia,Devbhoomi Dwarka, Gujarat", 
+                price: 360000, 
+                name: "Ganesh Thresher", 
+                images: [
+                    "ganesh.jpg", 
+                ],
+                translations: {
+                    hi: { name: "गणेश थ्रेशर", location: "भाडथर, जामखंभालिया, देवभूमि द्वारका, गुजरात", price: "₹3,60,000" },
+                    gu: { name: "ગણેશ થ્રેસર", location: "ભાડથર, જામખંભાળિયા, દેવભૂમિ દ્વારકા, ગુજરાત", price: "₹3,60,000" }
+                }
+            },
+            { 
+                type: "thresher", 
+                location: "Bhanvad, Gujarat", 
+                price: 210000, 
+                name: "Jayant Groundnut Thresher | 2022 model", 
+                images: [
+                    "jayant2022.jpg", 
+                ],
+                translations: {
+                    hi: { name: "जयंत मूंगफली थ्रेशर | 2022 मॉडल", location: "भानवड, गुजरात", price: "₹2,10,000" },
+                    gu: { name: "જયંત મગફળી થ્રેશર | 2022 મોડલ", location: "ભાણવડ, ગુજરાત", price: "₹2,10,000" }
+                }
+            }
+        ];
+
         const translations = {
             en: {
                 siteTitle: "KisanKheti",
@@ -113,7 +156,7 @@
                 tractor: "Tractor",
                 thresher: "Thresher",
                 rotavator: "Rotavator",
-                seeddrill: "Seed Drill",
+                seedDrill: "Seed Drill",
                 other: "Other",
                 locationLabel: "Location:",
                 priceLabel: "Max Price:",
@@ -130,9 +173,9 @@
                 typeLabel: "मशीन प्रकार:",
                 all: "सभी",
                 tractor: "ट्रैक्टर",
-                thresher: "हार्वेस्टर",
-                rotavator: "हल",
-                seeddrill: "बीजरोपण मशीन",
+                thresher: "थ्रेशर",
+                rotavator: "रोटावेटर",
+                seedDrill: "बीज ड्रिल",
                 other: "अन्य",
                 locationLabel: "स्थान:",
                 priceLabel: "अधिकतम मूल्य:",
@@ -149,9 +192,9 @@
                 typeLabel: "મશીનનો પ્રકાર:",
                 all: "બધા",
                 tractor: "ટ્રેક્ટર",
-                thresher: "હાર્વેસ્ટર",
-                rotavator: "હળ",
-                seeddrill: "બિયારણ મશીન",
+                thresher: "થ્રેશર",
+                rotavator: "રોટાવેટર",
+                seedDrill: "સીડ ડ્રિલ",
                 other: "અન્ય",
                 locationLabel: "સ્થાન:",
                 priceLabel: "મહત્તમ કિંમત:",
@@ -161,337 +204,21 @@
             }
         };
 
-        // Sample machine data with translations
-        const machines = [
-            { 
-                type: "tractor", 
-                location: "Jaipur, Rajasthan", 
-                price: 450000, 
-                name: "Mahindra 575 DI | 2019 model", 
-                image: "download.jpg",
-                translations: {
-                    hi: { name: "महिंद्रा 575 डीआई | 2019 मॉडल", location: "जयपुर, राजस्थान", price: "₹4,50,000" },
-                    gu: { name: "મહિન્દ્રા 575 ડીઆઈ | 2019 મોડલ", location: "જયપુર, રાજસ્થાન", price: "₹4,50,000" }
-                }
-            },
-            { 
-                type: "tractor", 
-                location: "Deesa, Gujarat", 
-                price: 150000, 
-                name: "Ford 3600", 
-                image: "ford3600.jpg",
-                translations: {
-                    hi: { name: "फोर्ड 3600", location: "डीसा, गुजरात", price: "₹1,50,000" },
-                    gu: { name: "ફોર્ડ ૩૬૦૦", location: "ડીસા, ગુજરાત", price: "₹1,50,000" }
-                }
-            },
-            { 
-                type: "thresher", 
-                location: "Bhadthar,Jamakhambalia,Devbhoomi Dwarka, Gujarat", 
-                price: 360000, 
-                name: "Ganesh Thresher", 
-                image: "ganesh.jpg",
-                translations: {
-                    hi: { name: "गणेश थ्रेशर", location: "भाडथर, जामखंभालिया, देवभूमि द्वारका, गुजरात", price: "₹3,60,000" },
-                    gu: { name: "ગણેશ થ્રેસર", location: "ભાડથર, જામખંભાળિયા, દેવભૂમિ દ્વારકા, ગુજરાત", price: "₹3,60,000" }
-                }
-            },
-            { 
-                type: "thresher", 
-                location: "Bhanvad, Gujarat", 
-                price: 210000, 
-                name: "Jayant Groundnut Thresher | 2022 model", 
-                image: "jayant2022.jpg",
-                translations: {
-                    hi: { name: "जयंत मूंगफली थ्रेशर | 2022 मॉडल", location: "भानवड, गुजरात", price: "₹2,10,000" },
-                    gu: { name: "જયંત મગફળી થ્રેશર | 2022 મોડલ", location: "ભાણવડ, ગુજરાત", price: "₹2,10,000" }
-                }
-            },
-
-            { 
-                type: "thresher", 
-                location: "Anand, Gujarat", 
-                price: 750000, 
-                name: "Kubota Thresher | 2020", 
-                image: "kubota.jpeg",
-                translations: {
-                    hi: { name: "कुबोटा हार्वेस्टर | 2020", location: "आनंद, गुजरात", price: "₹7,50,000" },
-                    gu: { name: "કુબોટા હાર્વેસ્ટર | 2020", location: "આણંદ, ગુજરાત", price: "₹7,50,000" }
-                }
-            },
-            { 
-                type: "rotavator", 
-                location: "Ludhiana, Punjab", 
-                price: 150000, 
-                name: "Lemken rotavator | 2018", 
-                image: "massy.jpeg",
-                translations: {
-                    hi: { name: "लेम्केन हल | 2018", location: "लुधियाना, पंजाब", price: "₹1,50,000" },
-                    gu: { name: "લેમ્કેન હળ | 2018", location: "લુધિયાણા, પંજાબ", price: "₹1,50,000" }
-                }
-            },
-            { 
-                type: "tractor", 
-                location: "Pune, Maharashtra", 
-                price: 600000, 
-                name: "John Deere 5050D | 2021", 
-                image: "kubota.jpeg",
-                translations: {
-                    hi: { name: "जॉन डीर 5050D | 2021", location: "पुणे, महाराष्ट्र", price: "₹6,00,000" },
-                    gu: { name: "જોન ડીર 5050D | 2021", location: "પુણે, મહારાષ્ટ્ર", price: "₹6,00,000" }
-                }
-            },
-            { 
-                type: "thresher", 
-                location: "Chandigarh, Punjab", 
-                price: 900000, 
-                name: "New Holland Combine | 2022", 
-                image: "kubota.jpeg",
-                translations: {
-                    hi: { name: "न्यू हॉलैंड कंबाइन | 2022", location: "चंडीगढ़, पंजाब", price: "₹9,00,000" },
-                    gu: { name: "ન્યૂ હોલેન્ડ કોમ્બાઇન | 2022", location: "ચંડીગઢ, પંજાબ", price: "₹9,00,000" }
-                }
-            },
-            { 
-                type: "rotavator", 
-                location: "Ahmedabad, Gujarat", 
-                price: 200000, 
-                name: "Kverneland Plough | 2017", 
-                image: "massy.jpeg",
-                translations: {
-                    hi: { name: "क्वर्नेलैंड हल | 2017", location: "अहमदाबाद, गुजरात", price: "₹2,00,000" },
-                    gu: { name: "ક્વર્નેલેન્ડ હળ | 2017", location: "અમદાવાદ, ગુજરાત", price: "₹2,00,000" }
-                }
-            },
-            { 
-                type: "seeddrill", 
-                location: "Bhopal, Madhya Pradesh", 
-                price: 300000, 
-                name: "Seedmaster Drill | 2020", 
-                image: "download.jpg",
-                translations: {
-                    hi: { name: "सीडमास्टर ड्रिल | 2020", location: "भोपाल, मध्य प्रदेश", price: "₹3,00,000" },
-                    gu: { name: "સીડમાસ્ટર ડ્રિલ | 2020", location: "ભોપાલ, મધ્ય પ્રદેશ", price: "₹3,00,000" }
-                }
-            },
-            { 
-                type: "tractor", 
-                location: "Delhi, Delhi", 
-                price: 500000, 
-                name: "Massey Ferguson 290 | 2019", 
-                image: "massey_ferguson_290.jpg",
-                translations: {
-                    hi: { name: "मैसी फर्ग्यूसन 290 | 2019", location: "दिल्ली, दिल्ली", price: "₹5,00,000" },
-                    gu: { name: "મેસી ફર્ગ્યુસન 290 | 2019", location: "દિલ્હી, દિલ્હી", price: "₹5,00,000" }
-                }
-            },
-            { 
-                type: "thresher", 
-                location: "Surat, Gujarat", 
-                price: 850000, 
-                name: "Claas Lexion | 2021", 
-                image: "claas_lexion.jpg",
-                translations: {
-                    hi: { name: "क्लास लेक्सियन | 2021", location: "सूरत, गुजरात", price: "₹8,50,000" },
-                    gu: { name: "ક્લાસ લેક્સિયન | 2021", location: "સુરત, ગુજરાત", price: "₹8,50,000" }
-                }
-            },
-            { 
-                type: "rotavator", 
-                location: "Kanpur, Uttar Pradesh", 
-                price: 180000, 
-                name: "Rabe Disc Plough | 2016", 
-                image: "rabe_disc_plough.jpg",
-                translations: {
-                    hi: { name: "रेब डिस्क हल | 2016", location: "कानपुर, उत्तर प्रदेश", price: "₹1,80,000" },
-                    gu: { name: "રેબ ડિસ્ક હળ | 2016", location: "કાનપુર, ઉત્તર પ્રદેશ", price: "₹1,80,000" }
-                }
-            },
-            { 
-                type: "seeddrill", 
-                location: "Hyderabad, Telangana", 
-                price: 400000, 
-                name: "Vaderstad Rapid | 2020", 
-                image: "vaderstad_rapid.jpg",
-                translations: {
-                    hi: { name: "वडरस्टाड रैपिड | 2020", location: "हैदराबाद, तेलंगाना", price: "₹4,00,000" },
-                    gu: { name: "વડરસ્ટાડ રેપિડ | 2020", location: "હૈદરાબાદ, તેલંગણા", price: "₹4,00,000" }
-                }
-            },
-            { 
-                type: "tractor", 
-                location: "Mumbai, Maharashtra", 
-                price: 700000, 
-                name: "Case IH Puma | 2022", 
-                image: "case_ih_puma.jpg",
-                translations: {
-                    hi: { name: "केस आईएच पुमा | 2022", location: "मुंबई, महाराष्ट्र", price: "₹7,00,000" },
-                    gu: { name: "કેસ આઈએચ પુમા | 2022", location: "મુંબઈ, મહારાષ્ટ્ર", price: "₹7,00,000" }
-                }
-            },
-            { 
-                type: "thresher", 
-                location: "Lucknow, Uttar Pradesh", 
-                price: 950000, 
-                name: "Deutz-Fahr thresher | 2023", 
-                image: "deutz_fahr_thresher.jpg",
-                translations: {
-                    hi: { name: "ड्यूट्ज-फahr हार्वेस्टर | 2023", location: "लखनऊ, उत्तर प्रदेश", price: "₹9,50,000" },
-                    gu: { name: "ડ્યૂટ્ઝ-ફાહર હાર્વેસ્ટર | 2023", location: "લખનઉ, ઉત્તર પ્રદેશ", price: "₹9,50,000" }
-                }
-            },
-            { 
-                type: "rotavator", 
-                location: "Chennai, Tamil Nadu", 
-                price: 220000, 
-                name: "Gregoire-Besson Plough | 2018", 
-                image: "gregoire_besson_plough.jpg",
-                translations: {
-                    hi: { name: "ग्रेगोयर-बेसन हल | 2018", location: "चेन्नई, तमिलनाडु", price: "₹2,20,000" },
-                    gu: { name: "ગ્રેગોર-બેસન હળ | 2018", location: "ચેન્નઈ, તમિલનાડુ", price: "₹2,20,000" }
-                }
-            },
-            { 
-                type: "seeddrill", 
-                location: "Patna, Bihar", 
-                price: 350000, 
-                name: "Amazone seeddrill | 2019", 
-                image: "amazone_seeddrill.jpg",
-                translations: {
-                    hi: { name: "अमाज़ोन सीडर | 2019", location: "पटना, बिहार", price: "₹3,50,000" },
-                    gu: { name: "અમાઝોન સીડર | 2019", location: "પટના, બિહાર", price: "₹3,50,000" }
-                }
-            },
-            { 
-                type: "tractor", 
-                location: "Kolkata, West Bengal", 
-                price: 800000, 
-                name: "Fendt 300 Vario | 2022", 
-                image: "fendt_300_vario.jpg",
-                translations: {
-                    hi: { name: "फेंडट 300 वारियो | 2022", location: "कोलकाता, पश्चिम बंगाल", price: "₹8,00,000" },
-                    gu: { name: "ફેન્ડટ 300 વારિઓ | 2022", location: "કોલકાતા, પશ્ચિમ બંગાળ", price: "₹8,00,000" }
-                }
-            },
-            { 
-                type: "thresher", 
-                location: "Nagpur, Maharashtra", 
-                price: 880000, 
-                name: "Sampo Rosenlew thresher | 2021", 
-                image: "sampo_rosenlew_thresher.jpg",
-                translations: {
-                    hi: { name: "साम्पो रोसेनलेव हार्वेस्टर | 2021", location: "नागपुर, महाराष्ट्र", price: "₹8,80,000" },
-                    gu: { name: "સામ્પો રોસેનલેવ હાર્વેસ્ટર | 2021", location: "નાગપુર, મહારાષ્ટ્ર", price: "₹8,80,000" }
-                }
-            },
-            { 
-                type: "rotavator", 
-                location: "Indore, Madhya Pradesh", 
-                price: 160000, 
-                name: "Howard Rotavator | 2017", 
-                image: "howard_rotavator.jpg",
-                translations: {
-                    hi: { name: "होवर्ड रोटावेटर | 2017", location: "इंदौर, मध्य प्रदेश", price: "₹1,60,000" },
-                    gu: { name: "હોવર્ડ રોટાવેટર | 2017", location: "ઇન્દોર, મધ્ય પ્રદેશ", price: "₹1,60,000" }
-                }
-            },
-            { 
-                type: "seeddrill", 
-                location: "Jaipur, Rajasthan", 
-                price: 320000, 
-                name: "Great Plains seeddrill | 2020", 
-                image: "great_plains_seeddrill.jpg",
-                translations: {
-                    hi: { name: "ग्रेट प्लेन्स सीडर | 2020", location: "जयपुर, राजस्थान", price: "₹3,20,000" },
-                    gu: { name: "ગ્રેટ પ્લેઈન્સ સીડર | 2020", location: "જયપુર, રાજસ્થાન", price: "₹3,20,000" }
-                }
-            },
-            { 
-                type: "tractor", 
-                location: "Bangalore, Karnataka", 
-                price: 650000, 
-                name: "Valtra T Series | 2021", 
-                image: "valtra_t_series.jpg",
-                translations: {
-                    hi: { name: "वाल्ट्रा टी सीरीज | 2021", location: "बेंगलुरु, कर्नाटक", price: "₹6,50,000" },
-                    gu: { name: "વાલ્ટ્રા ટી સીરીઝ | 2021", location: "બેંગ્લોર, કર્ણાટક", price: "₹6,50,000" }
-                }
-            },
-            { 
-                type: "thresher", 
-                location: "Amritsar, Punjab", 
-                price: 920000, 
-                name: "Laverda thresher | 2023", 
-                image: "laverda_thresher.jpg",
-                translations: {
-                    hi: { name: "लावर्डा हार्वेस्टर | 2023", location: "अमृतसर, पंजाब", price: "₹9,20,000" },
-                    gu: { name: "લવર્ડા હાર્વેસ્ટર | 2023", location: "અમૃતસર, પંજાબ", price: "₹9,20,000" }
-                }
-            },
-            { 
-                type: "rotavator", 
-                location: "Bhopal, Madhya Pradesh", 
-                price: 190000, 
-                name: "Dowdeswell Plough | 2018", 
-                image: "dowdeswell_plough.jpg",
-                translations: {
-                    hi: { name: "डाउड्सवेल हल | 2018", location: "भोपाल, मध्य प्रदेश", price: "₹1,90,000" },
-                    gu: { name: "ડાઉડ્સવેલ હળ | 2018", location: "ભોપાલ, મધ્ય પ્રદેશ", price: "₹1,90,000" }
-                }
-            },
-            { 
-                type: "seeddrill", 
-                location: "Chennai, Tamil Nadu", 
-                price: 370000, 
-                name: "Kuhn Seed Drill | 2021", 
-                image: "kuhn_seed_drill.jpg",
-                translations: {
-                    hi: { name: "कुह्न सीड ड्रिल | 2021", location: "चेन्नई, तमिलनाडु", price: "₹3,70,000" },
-                    gu: { name: "કુહ્ન સીડ ડ્રિલ | 2021", location: "ચેન્નઈ, તમિલનાડુ", price: "₹3,70,000" }
-                }
-            },
-            { 
-                type: "tractor", 
-                location: "Hyderabad, Telangana", 
-                price: 550000, 
-                name: "Swaraj 744 FE | 2020", 
-                image: "swaraj_744_fe.jpg",
-                translations: {
-                    hi: { name: "स्वराज 744 FE | 2020", location: "हैदराबाद, तेलंगाना", price: "₹5,50,000" },
-                    gu: { name: "સ્વરાજ 744 FE | 2020", location: "હૈદરાબાદ, તેલંગણા", price: "₹5,50,000" }
-                }
-            }
-        ];
-
-        // Function to translate content
         function translateContent(lang) {
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.getAttribute('data-translate');
                 element.textContent = translations[lang][key] || element.textContent;
             });
-            // Re-render machines to apply new language
             renderMachines();
         }
 
-        // Function to create and append machine cards with translated content
         function renderMachines(machinesToRender = machines) {
             const grid = document.getElementById('machinery-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
             const currentLang = document.getElementById('language-switcher').value;
-            if (!grid) {
-                console.error('Machinery grid element not found');
-                return;
-            }
-            grid.innerHTML = ''; // Clear existing cards
             machinesToRender.forEach(machine => {
-                if (!machine) {
-                    console.warn('Invalid machine data encountered');
-                    return;
-                }
-                const translated = machine.translations[currentLang] || { 
-                    name: machine.name, 
-                    location: machine.location, 
-                    price: `₹${machine.price.toLocaleString()}` 
-                };
+                const translated = machine.translations[currentLang] || { name: machine.name, location: machine.location, price: `₹${machine.price.toLocaleString()}` };
                 const card = document.createElement('div');
                 card.className = 'machinery-card';
                 card.dataset.type = machine.type;
@@ -499,7 +226,13 @@
                 card.dataset.price = machine.price;
                 card.dataset.name = translated.name;
                 card.innerHTML = `
-                    <img src="images/${machine.image}" alt="${translated.name}">
+                    <div class="carousel-container">
+                        <div class="carousel-images">
+                            ${machine.images.map((img, index) => `<img src="${img}" alt="${translated.name} Image ${index + 1}" class="carousel-image ${index === 0 ? 'active' : ''}" style="display: ${index === 0 ? 'block' : 'none'};">`).join('')}
+                        </div>
+                        <button class="carousel-prev" onclick="changeImage(this, -1)">&#10094;</button>
+                        <button class="carousel-next" onclick="changeImage(this, 1)">&#10095;</button>
+                    </div>
                     <div class="machinery-card-content">
                         <div class="machine-header">${translated.name}</div>
                         <div class="location"><span class="label">${translations[currentLang].location}</span> <span class="value">${translated.location}</span></div>
@@ -511,7 +244,22 @@
             });
         }
 
-        // Function to handle filtering
+        function changeImage(button, delta) {
+            const card = button.parentElement;
+            const images = card.querySelectorAll('.carousel-image');
+            let currentIndex = Array.from(images).findIndex(img => img.style.display === 'block');
+            currentIndex = (currentIndex + delta + images.length) % images.length;
+            images.forEach((img, index) => img.style.display = index === currentIndex ? 'block' : 'none');
+        }
+
+        function showContactPopup(card) {
+            const machineName = encodeURIComponent(card.dataset.name);
+            const entryId = '123456789';
+            const iframe = document.getElementById('contact-form-iframe');
+            iframe.src = `https://docs.google.com/forms/d/e/1FAIpQLSdSVSG13_QRNNryioLCPj0_s_GCOLE4fsuO2ugB_3uPJoWrAg/viewform?embedded=true&entry.${entryId}=${machineName}`;
+            document.querySelector('.contact-popup').style.display = 'flex';
+        }
+
         function filterMachines() {
             const searchQuery = document.getElementById('search-bar').value.toLowerCase();
             const typeFilter = document.getElementById('filter-type').value.toLowerCase();
@@ -521,11 +269,7 @@
 
             const filteredMachines = machines.filter(machine => {
                 const translated = machine.translations[currentLang] || { name: machine.name, location: machine.location };
-                const matchesSearch = 
-                    translated.name.toLowerCase().includes(searchQuery) ||
-                    machine.type.toLowerCase().includes(searchQuery) ||
-                    translated.location.toLowerCase().includes(searchQuery) ||
-                    machine.price.toString().includes(searchQuery);
+                const matchesSearch = translated.name.toLowerCase().includes(searchQuery) || machine.type.toLowerCase().includes(searchQuery) || translated.location.toLowerCase().includes(searchQuery) || machine.price.toString().includes(searchQuery);
                 const matchesType = typeFilter === '' || machine.type.toLowerCase() === typeFilter;
                 const matchesLocation = translated.location.toLowerCase().includes(locationFilter);
                 const matchesPrice = machine.price <= maxPrice;
@@ -535,31 +279,16 @@
             renderMachines(filteredMachines);
         }
 
-        // Initial render and language setup
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM fully loaded, rendering machines...');
             renderMachines();
-            translateContent('en'); // Default to English
+            translateContent('en');
 
-            // Add event listeners for filters
             document.getElementById('search-bar').addEventListener('input', filterMachines);
             document.getElementById('filter-type').addEventListener('change', filterMachines);
             document.getElementById('filter-location').addEventListener('input', filterMachines);
             document.getElementById('filter-price-max').addEventListener('input', filterMachines);
 
-            // Language switcher event listener
-            document.getElementById('language-switcher').addEventListener('change', (e) => {
-                translateContent(e.target.value);
-            });
-
-            // Contact popup functionality
-            window.showContactPopup = function(card) {
-                const machineName = encodeURIComponent(card.dataset.name);
-                const entryId = '1111995855'; // Replace with the actual entry ID
-                const iframe = document.getElementById('contact-form-iframe');
-                iframe.src = `https://docs.google.com/forms/d/e/1FAIpQLSdSVSG13_QRNNryioLCPj0_s_GCOLE4fsuO2ugB_3uPJoWrAg/viewform?embedded=true&entry.${entryId}=${machineName}`;
-                document.querySelector('.contact-popup').style.display = 'flex';
-            };
+            document.getElementById('language-switcher').addEventListener('change', (e) => translateContent(e.target.value));
 
             document.querySelector('.close-button').addEventListener('click', () => {
                 document.querySelector('.contact-popup').style.display = 'none';
