@@ -131,47 +131,11 @@ nav.main-nav a:hover {
     transform: translateY(-3px);
 }
 
-.carousel-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-.carousel-images {
-    width: 100%;
-}
-
-.carousel-image {
+.machinery-card img {
     width: 100%;
     height: 150px;
     object-fit: contain;
     max-height: 150px;
-    transition: opacity 0.5s;
-}
-
-.carousel-prev, .carousel-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(215, 0, 0, 0.7);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    z-index: 10;
-}
-
-.carousel-prev {
-    left: 10px;
-}
-
-.carousel-next {
-    right: 10px;
-}
-
-.carousel-prev:hover, .carousel-next:hover {
-    background-color: rgba(163, 0, 0, 0.7);
 }
 
 .machinery-card-content {
@@ -318,7 +282,7 @@ footer a:hover {
 
 @media (max-width: 600px) {
     header {
-        flex-direction: row;
+        flex-direction: row; /* Keep logo and title inline */
         padding: 0.5rem;
         justify-content: center;
         align-items: center;
@@ -333,11 +297,11 @@ footer a:hover {
     }
 
     nav.main-nav {
-        flex-direction: row;
+        flex-direction: row; /* Keep navigation items inline */
         padding: 0.5rem 0;
         justify-content: center;
         align-items: center;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* Allow wrapping if needed */
     }
 
     nav.main-nav ul {
@@ -353,7 +317,7 @@ footer a:hover {
     .language-switcher {
         width: 100%;
         max-width: 150px;
-        margin-top: 0.5rem;
+        margin-top: 0.5rem; /* Add spacing if wrapped */
     }
 
     .search-filters {
@@ -390,10 +354,5 @@ footer a:hover {
 
     .contact-popup h3 {
         font-size: 1.2rem;
-    }
-
-    .carousel-prev, .carousel-next {
-        padding: 8px;
-        font-size: 16px;
     }
 }
