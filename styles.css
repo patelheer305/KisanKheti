@@ -153,13 +153,19 @@ nav.main-nav a:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(215, 0, 0, 0.7);
+    background-color: #808080; /* Grey color */
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
     font-size: 18px;
     z-index: 10;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-prev {
@@ -171,7 +177,7 @@ nav.main-nav a:hover {
 }
 
 .carousel-prev:hover, .carousel-next:hover {
-    background-color: rgba(163, 0, 0, 0.7);
+    background-color: #666666; /* Darker grey on hover */
 }
 
 .machinery-card-content {
