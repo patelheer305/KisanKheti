@@ -75,6 +75,7 @@
                 <option value="thresher" data-translate="thresher">Thresher</option>
                 <option value="rotavator" data-translate="rotavator">Rotavator</option>
                 <option value="seed drill" data-translate="seedDrill">Seed Drill</option>
+                <option value="cultivator" data-translate="seedDrill">Cultivator</option>
                 <option value="other" data-translate="other">Other</option>
             </select>
             <label for="filter-location" data-translate="locationLabel">Location:</label>
@@ -105,41 +106,66 @@
                 type: "tractor", 
                 location: "Deesa, Gujarat", 
                 price: 150000, 
-                name: "Ford 3600",  
+                name: "M&F Tractor | 2024 Model",  
                 images: [
-                    "images/ford1.jpg",
-                    "images/ford2.jpg",
-                    "images/ford3.jpg"
+                    "images/tractor.png",
                 ],
                 translations: {
-                    hi: { name: "फोर्ड 3600", location: "डीसा, गुजरात", price: "₹1,50,000" },
-                    gu: { name: "ફોર્ડ ૩૬૦૦", location: "ડીસા, ગુજરાત", price: "₹1,50,000" }
+                    hi: { name: "M&F ट्रैक्टर | 2024 मॉडल", location: "डीसा, गुजरात", price: "₹1,50,000" },
+                    gu: { name: "M&F ટ્રેક્ટર | 2024 મોડેલ", location: "ડીસા, ગુજરાત", price: "₹1,50,000" }
                 }
             },
             { 
                 type: "thresher", 
                 location: "Bhadthar,Jamakhambalia,Devbhoomi Dwarka, Gujarat", 
-                price: 360000, 
-                name: "Ganesh Thresher", 
+                price: 250000, 
+                name: "Maharaj Thresher | 2021 Model", 
                 images: [
-                    "images/ganesh.jpg", 
+                    "images/thresher.png", 
                 ],
                 translations: {
-                    hi: { name: "गणेश थ्रेशर", location: "भाडथर, जामखंभालिया, देवभूमि द्वारका, गुजरात", price: "₹3,60,000" },
-                    gu: { name: "ગણેશ થ્રેસર", location: "ભાડથર, જામખંભાળિયા, દેવભૂમિ દ્વારકા, ગુજરાત", price: "₹3,60,000" }
+                    hi: { name: "महाराज थ्रेशर | 2021 मॉडल", location: "भाडथर, जामखंभालिया, देवभूमि द्वारका, गुजरात", price: "₹2,50,000" },
+                    gu: { name: "મહારાજ થ્રેશર | ૨૦૨૧ મોડેલ", location: "ભાડથર, જામખંભાળિયા, દેવભૂમિ દ્વારકા, ગુજરાત", price: "₹2,50,000" }
+                }
+            },
+
+            { 
+                type: "rotavator", 
+                location: "Sanchore, Rajasthan", 
+                price: 51000, 
+                name: "Shree Shakti Rotavator | 2020 Model", 
+                images: [
+                    "images/rotavator.png", 
+                ],
+                translations: {
+                    hi: { name: "श्री शक्ति रोटावेटर | 2020 मॉडल", location: "સાંચોર, રાજસ્થાન", price: "₹51,000" },
+                    gu: { name: "શ્રી શક્તિ રોટાવેટર | 2020 મોડલ", location: "सांचौर, राजस्थान", price: "₹51,000" }
                 }
             },
             { 
-                type: "thresher", 
+                type: "seed drill", 
                 location: "Bhanvad, Gujarat", 
-                price: 210000, 
-                name: "Jayant Groundnut Thresher | 2022 model", 
+                price: 37500, 
+                name: "Ceressy Seed Drill | 2019 Model", 
                 images: [
-                    "images/jayant2022.jpg", 
+                    "images/seeddrill.png", 
                 ],
                 translations: {
-                    hi: { name: "जयंत मूंगफली थ्रेशर | 2022 मॉडल", location: "भानवड, गुजरात", price: "₹2,10,000" },
-                    gu: { name: "જયંત મગફળી થ્રેશર | 2022 મોડલ", location: "ભાણવડ, ગુજરાત", price: "₹2,10,000" }
+                    hi: { name: "सेरेसी सीड ड्रिल | 2019 मॉडल", location: "भानवड, गुजरात", price: "₹37,500" },
+                    gu: { name: "સેરેસી સીડ ડ્રીલ | 2019 મોડેલ", location: "ભાણવડ, ગુજરાત", price: "₹37,500" }
+                }
+            },
+            { 
+                type: "cultivator", 
+                location: "Udaipur, Rajastan", 
+                price: 6500, 
+                name: "Bombay Cultivator | 2023 Model", 
+                images: [
+                    "images/cultivator.png", 
+                ],
+                translations: {
+                    hi: { name: "बॉम्बे कल्टीवेटर | 2023 मॉडल", location: "उदयपुर, राजस्थान", price: "₹6,500" },
+                    gu: { name: "બોમ્બે કલ્ટિવેટર | ૨૦૨૩ મોડેલ", location: "ઉદયપુર, રાજસ્થાન", price: "₹6,500" }
                 }
             }
         ];
