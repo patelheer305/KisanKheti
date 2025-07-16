@@ -183,14 +183,14 @@ nav.main-nav a:hover {
 }
 
 .machinery-card h3 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #D70000;
     margin-bottom: 0.5rem;
     display: none;
 }
 
 .machinery-card .machine-header {
-    font-size: 1.1rem;
+    font-size: 0.75rem;
     color: #D70000;
     margin-bottom: 0.3rem;
     overflow: hidden;
