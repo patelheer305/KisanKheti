@@ -183,23 +183,23 @@ nav.main-nav a:hover {
 }
 
 .machinery-card h3 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #D70000;
     margin-bottom: 0.5rem;
     display: none;
 }
 
 .machinery-card .machine-header {
-    font-size: 0.75rem;
+    font-size: 1rem;
     color: #D70000;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .machinery-card .location, .machinery-card .price {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
     font-size: 0.9rem;
 }
 
