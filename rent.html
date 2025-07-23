@@ -1,0 +1,345 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KisanKheti - Rent Farm Machinery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="KisanKheti Logo">
+        <div class="title-text" data-translate="header.title">KisanKheti</div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html" data-translate="nav.buy">Buy</a></li>
+            <li><a href="rent.html" data-translate="nav.rent">Rent</a></li>
+            <li><a href="sell.html" data-translate="nav.sell">Sell</a></li>
+        </ul>
+        <select class="language-switcher" id="language-switcher">
+            <option value="en" data-translate="lang.english">English</option>
+            <option value="hi" data-translate="lang.hindi">Hindi</option>
+            <option value="gu" data-translate="lang.gujarati">Gujarati</option>
+        </select>
+    </nav>
+
+    <section class="machinery-section">
+        <h2 data-translate="section.rent">Machinery for Rent</h2>
+        <div class="search-filters">
+            <div>
+                <label for="search" data-translate="filter.search">Search:</label>
+                <input type="text" id="search" placeholder="Search machinery...">
+            </div>
+            <div>
+                <label for="machine-type" data-translate="filter.machineType">Machine Type:</label>
+                <select id="machine-type">
+                    <option value="" data-translate="filter.all">All</option>
+                    <option value="tractor" data-translate="filter.tractor">Tractor</option>
+                    <option value="thresher" data-translate="filter.thresher">Thresher</option>
+                    <option value="rotavator" data-translate="filter.rotavator">Rotavator</option>
+                    <option value="seed-drill" data-translate="filter.seedDrill">Seed Drill</option>
+                    <option value="other" data-translate="filter.other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="location" data-translate="filter.location">Location:</label>
+                <input type="text" id="location" placeholder="Enter location...">
+            </div>
+            <div>
+                <label for="max-price" data-translate="filter.maxPrice">Max Price:</label>
+                <input type="number" id="max-price" placeholder="Max price...">
+            </div>
+        </div>
+
+        <div class="machinery-grid" id="machinery-grid">
+            <!-- Hardcoded Machinery Listing 1 -->
+            <div class="machinery-card" data-machine-type="tractor" data-location="Ahmedabad, Gujarat" data-price="500">
+                <div class="carousel-container">
+                    <div class="carousel-images" id="carousel-1">
+                        <img class="carousel-image" src="tractor1.jpg" alt="Tractor" style="display: block;">
+                        <img class="carousel-image" src="tractor2.jpg" alt="Tractor" style="display: none;">
+                    </div>
+                    <button class="carousel-prev" onclick="changeImage(1, -1)"><</button>
+                    <button class="carousel-next" onclick="changeImage(1, 1)">></button>
+                </div>
+                <div class="machinery-card-content">
+                    <div class="machine-header">Tractor</div>
+                    <div class="location"><span class="label" data-translate="card.owner">Owner:</span> <span class="value">Ramesh Patel</span></div>
+                    <div class="location"><span class="label" data-translate="card.location">Location:</span> <span class="value">Ahmedabad, Gujarat</span></div>
+                    <div class="price"><span class="label" data-translate="card.price">Price:</span> <span class="value">₹500/hour</span></div>
+                    <button class="contact-button" onclick="openPopup(1, '+919876543210')" data-translate="card.contact">Contact</button>
+                </div>
+            </div>
+            <!-- Hardcoded Machinery Listing 2 -->
+            <div class="machinery-card" data-machine-type="harvester" data-location="Jaipur, Rajasthan" data-price="800">
+                <div class="carousel-container">
+                    <div class="carousel-images" id="carousel-2">
+                        <img class="carousel-image" src="harvester1.jpg" alt="Harvester" style="display: block;">
+                        <img class="carousel-image" src="harvester2.jpg" alt="Harvester" style="display: none;">
+                    </div>
+                    <button class="carousel-prev" onclick="changeImage(2, -1)"><</button>
+                    <button class="carousel-next" onclick="changeImage(2, 1)">></button>
+                </div>
+                <div class="machinery-card-content">
+                    <div class="machine-header">Harvester</div>
+                    <div class="location"><span class="label" data-translate="card.owner">Owner:</span> <span class="value">Suresh Kumar</span></div>
+                    <div class="location"><span class="label" data-translate="card.location">Location:</span> <span class="value">Jaipur, Rajasthan</span></div>
+                    <div class="price"><span class="label" data-translate="card.price">Price:</span> <span class="value">₹800/hour</span></div>
+                    <button class="contact-button" onclick="openPopup(2, '+919123456789')" data-translate="card.contact">Contact</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="contact-popup" id="contact-popup">
+        <div class="popup-content">
+            <button class="close-button" onclick="closePopup()">X</button>
+            <h3 data-translate="popup.contactRenter">Contact Renter</h3>
+            <div class="form-container">
+                <iframe id="contact-form" src="https://docs.google.com/forms/d/e/1FAIpQLSdYqC-gyqbuP_a6gSp12UtO4edkNj04uG-Wg3GaOBodiqr1DA/viewform?usp=header" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p data-translate="footer.copyright">© 2025 KisanKheti. All rights reserved.</p>
+        <div>
+            <a href="https://facebook.com" data-translate="footer.facebook">Facebook</a>
+            <a href="https://instagram.com" data-translate="footer.instagram">Instagram</a>
+            <a href="https://whatsapp.com" data-translate="footer.whatsapp">WhatsApp</a>
+        </div>
+    </footer>
+
+    <script>
+        // Translation object
+        const translations = {
+            en: {
+                'header.title': 'KisanKheti',
+                'nav.buy': 'Buy',
+                'nav.rent': 'Rent',
+                'nav.sell': 'Sell',
+                'lang.english': 'English',
+                'lang.hindi': 'Hindi',
+                'lang.gujarati': 'Gujarati',
+                'section.rent': 'Machinery for Rent',
+                'filter.search': 'Search:',
+                'filter.machineType': 'Machine Type:',
+                'filter.all': 'All',
+                'filter.tractor': 'Tractor',
+                'filter.thresher': 'Thresher',
+                'filter.rotavator': 'Rotavator',
+                'filter.seedDrill': 'Seed Drill',
+                'filter.other': 'Other',
+                'filter.location': 'Location:',
+                'filter.maxPrice': 'Max Price:',
+                'popup.contactRenter': 'Contact Renter',
+                'popup.callMessage': 'Calling {phone}...',
+                'card.owner': 'Owner:',
+                'card.location': 'Location:',
+                'card.price': 'Price:',
+                'card.contact': 'Contact',
+                'footer.copyright': '© 2025 KisanKheti. All rights reserved.',
+                'footer.facebook': 'Facebook',
+                'footer.instagram': 'Instagram',
+                'footer.whatsapp': 'WhatsApp'
+            },
+            hi: {
+                'header.title': 'किसानखेती',
+                'nav.buy': 'खरीदें',
+                'nav.rent': 'किराया',
+                'nav.sell': 'बेचें',
+                'lang.english': 'अंग्रेजी',
+                'lang.hindi': 'हिंदी',
+                'lang.gujarati': 'गुजराती',
+                'section.rent': 'किराए के लिए मशीनरी',
+                'filter.search': 'खोज:',
+                'filter.machineType': 'मशीन का प्रकार:',
+                'filter.all': 'सभी',
+                'filter.tractor': 'ट्रैक्टर',
+                'filter.thresher': 'थ्रेशर',
+                'filter.rotavator': 'रोटावेटर',
+                'filter.seedDrill': 'सीड ड्रिल',
+                'filter.other': 'अन्य',
+                'filter.location': 'स्थान:',
+                'filter.maxPrice': 'अधिकतम मूल्य:',
+                'popup.contactRenter': 'किराएदार से संपर्क करें',
+                'popup.callMessage': '{phone} को कॉल कर रहा है...',
+                'card.owner': 'मालिक:',
+                'card.location': 'स्थान:',
+                'card.price': 'मूल्य:',
+                'card.contact': 'संपर्क',
+                'footer.copyright': '© 2025 किसानखेती। सर्वाधिकार सुरक्षित।',
+                'footer.facebook': 'फेसबुक',
+                'footer.instagram': 'इंस्टाग्राम',
+                'footer.whatsapp': 'व्हाट्सएप'
+            },
+            gu: {
+                'header.title': 'કિસાનખેતી',
+                'nav.buy': 'ખરીદો',
+                'nav.rent': 'ભાડે',
+                'nav.sell': 'વેચો',
+                'lang.english': 'અંગ્રેજી',
+                'lang.hindi': 'હિન્દી',
+                'lang.gujarati': 'ગુજરાતી',
+                'section.rent': 'ભાડે માટે મશીનરી',
+                'filter.search': 'શોધો:',
+                'filter.machineType': 'મશીનનો પ્રકાર:',
+                'filter.all': 'બધા',
+                'filter.tractor': 'ટ્રેક્ટર',
+                'filter.thresher': 'થ્રેશર',
+                'filter.rotavator': 'રોટાવેટર',
+                'filter.seedDrill': 'સીડ ડ્રિલ',
+                'filter.other': 'અન્ય',
+                'filter.location': 'સ્થળ:',
+                'filter.maxPrice': 'મહત્તમ કિંમત:',
+                'popup.contactRenter': 'ભાડે આપનાર સાથે સંપર્ક કરો',
+                'popup.callMessage': '{phone} ને કોલ કરી રહ્યું છે...',
+                'card.owner': 'માલિક:',
+                'card.location': 'સ્થળ:',
+                'card.price': 'કિંમત:',
+                'card.contact': 'સંપર્ક',
+                'footer.copyright': '© 2025 કિસાનખેતી. બધા હક્કો અનામત.',
+                'footer.facebook': 'ફેસબુક',
+                'footer.instagram': 'ઇન્સ્ટાગ્રામ',
+                'footer.whatsapp': 'વોટ્સએપ'
+            }
+        };
+
+        let currentPhone = null;
+        let currentLang = 'en';
+        let currentImages = {};
+
+        // Function to update text based on language
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translations[lang][key] || element.textContent;
+            });
+            // Update placeholders for inputs
+            document.getElementById('search').placeholder = lang === 'en' ? 'Search machinery...' :
+                lang === 'hi' ? 'मशीनरी खोजें...' : 'મશીનરી શોધો...';
+            document.getElementById('location').placeholder = lang === 'en' ? 'Enter location...' :
+                lang === 'hi' ? 'स्थान दर्ज करें...' : 'સ્થળ દાખલ કરો...';
+            document.getElementById('max-price').placeholder = lang === 'en' ? 'Max price...' :
+                lang === 'hi' ? 'अधिकतम मूल्य...' : 'મહત્તમ કિંમત...';
+        }
+
+        // Function to handle carousel image changes
+        function changeImage(id, direction) {
+            const carousel = document.getElementById(`carousel-${id}`);
+            const images = carousel.getElementsByClassName('carousel-image');
+            if (!currentImages[id]) currentImages[id] = 0;
+            images[currentImages[id]].style.display = 'none';
+            currentImages[id] = (currentImages[id] + direction + images.length) % images.length;
+            images[currentImages[id]].style.display = 'block';
+        }
+
+        // Function to filter machinery based on input
+        function filterMachinery() {
+            const search = document.getElementById('search').value.toLowerCase();
+            const machineType = document.getElementById('machine-type').value.toLowerCase();
+            const location = document.getElementById('location').value.toLowerCase();
+            const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
+
+            const cards = document.querySelectorAll('.machinery-card');
+            cards.forEach(card => {
+                const name = card.querySelector('.machine-header').textContent.toLowerCase();
+                const cardMachineType = card.getAttribute('data-machine-type').toLowerCase();
+                const cardLocation = card.getAttribute('data-location').toLowerCase();
+                const cardPrice = parseFloat(card.getAttribute('data-price'));
+
+                const matchesSearch = name.includes(search);
+                const matchesMachineType = !machineType || cardMachineType === machineType;
+                const matchesLocation = !location || cardLocation.includes(location);
+                const matchesPrice = cardPrice <= maxPrice;
+
+                card.style.display = matchesSearch && matchesMachineType && matchesLocation && matchesPrice ? 'block' : 'none';
+            });
+        }
+
+        // Function to open contact popup
+        function openPopup(id, phone) {
+            const popup = document.getElementById('contact-popup');
+            const formFrame = document.getElementById('contact-form');
+            currentPhone = phone;
+            formFrame.style.display = 'block'; // Show form
+            popup.style.display = 'flex';
+
+            // Simulate form submission detection (replace with actual Google Form submission handling)
+            formFrame.onload = () => {
+                // Assume form submission triggers the call
+                setTimeout(() => {
+                    // Simulate call (replace with actual telephony API or tel: link)
+                    alert(translations[currentLang]['popup.callMessage']?.replace('{phone}', currentPhone) || `Calling ${currentPhone}...`);
+                    // For mobile browsers: window.location.href = `tel:${currentPhone}`;
+                    closePopup();
+                }, 2000); // Simulate form submission delay
+            };
+        }
+
+        // Function to close contact popup
+        function closePopup() {
+            const popup = document.getElementById('contact-popup');
+            const formFrame = document.getElementById('contact-form');
+            formFrame.style.display = 'block';
+            popup.style.display = 'none';
+        }
+
+        // Initialize language and filters
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLanguage('en'); // Default to English
+            document.getElementById('language-switcher').addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
+            });
+            // Add event listeners for filters
+            document.getElementById('search').addEventListener('input', filterMachinery);
+            document.getElementById('machine-type').addEventListener('change', filterMachinery);
+            document.getElementById('location').addEventListener('input', filterMachinery);
+            document.getElementById('max-price').addEventListener('input', filterMachinery);
+            filterMachinery(); // Initial filter
+        });
+    </script>
+</body>
+</html>
