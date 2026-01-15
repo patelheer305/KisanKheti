@@ -106,15 +106,17 @@
                 type: "thresher", 
                 location: "Parawala, Porbandar, Gujarat", 
                 price: 215000, 
-                name: "Jayant Thresher | 2025 Model",  
+                name: "Jayant Thresher | 2025 Model", 
+                sellerName: "Ramesh Patel",
+                sellerMobile: "9876543210",
                 images: [
                     "images/th9/j1.jpg",
                     "images/th9/j2.jpg",
                     "images/th9/j3.jpg"
                 ],
                 translations: {
-                    hi: { name: "जयंत थ्रेशर | 2025 मॉडल", location: "पारावला, पोरबंदर, गुजरात", price: "₹2,15,000" },
-                    gu: { name: "જયંત થ્રેશર | 2025 મોડેલ", location: "પારાવાળા, પોરબંદર, ગુજરાત", price: "₹2,15,000" }
+                    hi: { name: "जयंत थ्रेशर | 2025 मॉडल", location: "पारावला, पोरबंदर, गुजरात", price: "₹2,15,000", sellerName: "रमेश पटेल" },
+                    gu: { name: "જયંત થ્રેશર | 2025 મોડેલ", location: "પારાવાળા, પોરબંદર, ગુજરાત", price: "₹2,15,000", sellerName: "રમેશ પટેલ" }
                 }
             },
             { 
@@ -394,6 +396,8 @@
                 priceLabel: "Max Price:",
                 location: "Location:",
                 price: "Price:",
+                seller: "Seller:",
+                mobile: "Mobile:",
                 contact: "Contact"
             },
             hi: {
@@ -414,6 +418,8 @@
                 priceLabel: "अधिकतम मूल्य:",
                 location: "स्थान:",
                 price: "मूल्य:",
+                seller: "विक्रेता:",
+                mobile: "मोबाइल:",
                 contact: "संपर्क करें"
             },
             gu: {
@@ -434,6 +440,8 @@
                 priceLabel: "મહત્તમ કિંમત:",
                 location: "સ્થાન:",
                 price: "કિંમત:",
+                seller: "વેચનાર:",
+                mobile: "મોબાઇલ:",
                 contact: "સંપર્ક કરો"
             }
         };
@@ -471,6 +479,8 @@
                         <div class="machine-header">${translated.name}</div>
                         <div class="location"><span class="label">${translations[currentLang].location}</span> <span class="value">${translated.location}</span></div>
                         <div class="price"><span class="label">${translations[currentLang].price}</span> <span class="value">${translated.price}</span></div>
+                        <div class="seller"><span class="label">${translations[currentLang].seller}</span> <span class="value">${translated.sellerName || machine.sellerName}</span></div>
+                        <div class="mobile"><span class="label">${translations[currentLang].mobile}</span> <span class="value"><a href="tel:${machine.sellerMobile}">${machine.sellerMobile}</a></span></div>
                         <button class="contact-button" onclick="showContactPopup(this.parentNode.parentNode)" data-translate="contact">${translations[currentLang].contact || 'Contact'}</button>
                     </div>
                 `;
