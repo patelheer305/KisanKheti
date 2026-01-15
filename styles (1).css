@@ -209,14 +209,6 @@ nav.main-nav a:hover {
     font-size: 0.9rem;
 }
 
-.machinery-card .location .label, .machinery-card .price .label {
-    font-weight: bold;
-}
-
-.machinery-card .location .value, .machinery-card .price .value {
-    font-weight: normal;
-}
-
 .machinery-card .seller .label,
 .machinery-card .mobile .label {
     font-weight: bold;
@@ -236,6 +228,14 @@ nav.main-nav a:hover {
 
 .machinery-card .mobile a:hover {
     text-decoration: underline;
+}
+
+.machinery-card .location .label, .machinery-card .price .label {
+    font-weight: bold;
+}
+
+.machinery-card .location .value, .machinery-card .price .value {
+    font-weight: normal;
 }
 
 .machinery-card .contact-button {
