@@ -203,12 +203,39 @@ nav.main-nav a:hover {
     font-size: 0.9rem;
 }
 
+.machinery-card .seller,
+.machinery-card .mobile {
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+}
+
 .machinery-card .location .label, .machinery-card .price .label {
     font-weight: bold;
 }
 
 .machinery-card .location .value, .machinery-card .price .value {
     font-weight: normal;
+}
+
+.machinery-card .seller .label,
+.machinery-card .mobile .label {
+    font-weight: bold;
+}
+
+.machinery-card .seller .value,
+.machinery-card .mobile .value {
+    font-weight: normal;
+}
+
+/* Mobile number styling */
+.machinery-card .mobile a {
+    color: #1a7f37;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.machinery-card .mobile a:hover {
+    text-decoration: underline;
 }
 
 .machinery-card .contact-button {
