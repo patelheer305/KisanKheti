@@ -99,13 +99,6 @@
         <a href="https://www.instagram.com/kisankheti.in?igsh=YmhhOG9iY3BzdDdu" target="_blank">Instagram</a>
         <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
     </footer>
-<!-- Image Lightbox -->
-<div class="image-lightbox" id="imageLightbox">
-    <span class="lightbox-close" id="lightboxClose">&times;</span>
-    <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
-    <img id="lightboxImage" src="" alt="Preview">
-    <span class="lightbox-next" id="lightboxNext">&#10095;</span>
-</div>
     <script>
         const machines = [
             { 
@@ -480,7 +473,7 @@
      alt="${translated.name} Image ${index + 1}"
      class="carousel-image"
      style="display: ${index === 0 ? 'block' : 'none'};"
-     onclick="openLightbox(${JSON.stringify(machine.images)}, ${index})">
+     >
 `).join('')}
                         </div>
                         <button class="carousel-prev" onclick="changeImage(this, -1)">&#10094;</button>
@@ -548,42 +541,6 @@
                 document.querySelector('.contact-popup').style.display = 'none';
             });
         });
-
-        let lightboxImages = [];
-let currentLightboxIndex = 0;
-
-function openLightbox(images, index) {
-    lightboxImages = images;
-    currentLightboxIndex = index;
-    const lightbox = document.getElementById('imageLightbox');
-    const img = document.getElementById('lightboxImage');
-    img.src = lightboxImages[currentLightboxIndex];
-    lightbox.style.display = 'flex';
-}
-
-function closeLightbox() {
-    document.getElementById('imageLightbox').style.display = 'none';
-}
-
-function changeLightboxImage(delta) {
-    currentLightboxIndex =
-        (currentLightboxIndex + delta + lightboxImages.length) %
-        lightboxImages.length;
-    document.getElementById('lightboxImage').src =
-        lightboxImages[currentLightboxIndex];
-}
-
-document.getElementById('lightboxClose').onclick = closeLightbox;
-document.getElementById('lightboxPrev').onclick = () => changeLightboxImage(-1);
-document.getElementById('lightboxNext').onclick = () => changeLightboxImage(1);
-
-/* Close on background tap */
-document.getElementById('imageLightbox').addEventListener('click', (e) => {
-    if (e.target.id === 'imageLightbox') {
-        closeLightbox();
-    }
-});
-
     </script>
 
 </body>
