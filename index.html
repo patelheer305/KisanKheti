@@ -481,7 +481,6 @@
                         <div class="price"><span class="label">${translations[currentLang].price}</span> <span class="value">${translated.price}</span></div>
                         <div class="seller"><span class="label">${translations[currentLang].seller}</span> <span class="value">${translated.sellerName || machine.sellerName}</span></div>
                         <div class="mobile"><span class="label">${translations[currentLang].mobile}</span> <span class="value"><a href="tel:${machine.sellerMobile}">${machine.sellerMobile}</a></span></div>
-                        <button class="contact-button" onclick="showContactPopup(this.parentNode.parentNode)" data-translate="contact">${translations[currentLang].contact || 'Contact'}</button>
                     </div>
                 `;
                 grid.appendChild(card);
