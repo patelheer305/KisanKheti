@@ -470,7 +470,12 @@
                 card.innerHTML = `
                     <div class="carousel-container">
                         <div class="carousel-images">
-                            ${machine.images.map((img, index) => `<img src="${img}" alt="${translated.name} Image ${index + 1}" class="carousel-image ${index === 0 ? 'active' : ''}" style="display: ${index === 0 ? 'block' : 'none'};">`).join('')}
+                            ${machine.images.map((img, index) => `<img src="${img}"
+     alt="${translated.name} Image ${index + 1}"
+     class="carousel-image"
+     style="display: ${index === 0 ? 'block' : 'none'};"
+     onclick="openLightbox(${JSON.stringify(machine.images)}, ${index})">
+`).join('')}
                         </div>
                         <button class="carousel-prev" onclick="changeImage(this, -1)">&#10094;</button>
                         <button class="carousel-next" onclick="changeImage(this, 1)">&#10095;</button>
