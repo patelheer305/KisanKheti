@@ -542,6 +542,42 @@
                 document.querySelector('.contact-popup').style.display = 'none';
             });
         });
+
+        let lightboxImages = [];
+let currentLightboxIndex = 0;
+
+function openLightbox(images, index) {
+    lightboxImages = images;
+    currentLightboxIndex = index;
+    const lightbox = document.getElementById('imageLightbox');
+    const img = document.getElementById('lightboxImage');
+    img.src = lightboxImages[currentLightboxIndex];
+    lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+    document.getElementById('imageLightbox').style.display = 'none';
+}
+
+function changeLightboxImage(delta) {
+    currentLightboxIndex =
+        (currentLightboxIndex + delta + lightboxImages.length) %
+        lightboxImages.length;
+    document.getElementById('lightboxImage').src =
+        lightboxImages[currentLightboxIndex];
+}
+
+document.getElementById('lightboxClose').onclick = closeLightbox;
+document.getElementById('lightboxPrev').onclick = () => changeLightboxImage(-1);
+document.getElementById('lightboxNext').onclick = () => changeLightboxImage(1);
+
+/* Close on background tap */
+document.getElementById('imageLightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'imageLightbox') {
+        closeLightbox();
+    }
+});
+
     </script>
 <!-- Image Lightbox -->
 <div class="image-lightbox" id="imageLightbox">
