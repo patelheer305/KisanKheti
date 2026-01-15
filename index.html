@@ -480,7 +480,7 @@
                         <div class="location"><span class="label">${translations[currentLang].location}</span> <span class="value">${translated.location}</span></div>
                         <div class="price"><span class="label">${translations[currentLang].price}</span> <span class="value">${translated.price}</span></div>
                         <div class="seller"><span class="label">${translations[currentLang].seller}</span> <span class="value">${translated.sellerName || machine.sellerName}</span></div>
-                        <div class="mobile"><span class="label">${translations[currentLang].mobile}</span> <span class="value"><a href="tel:${machine.sellerMobile}">${machine.sellerMobile}</a></span></div>
+                        <div class="mobile"><span class="label">${translations[currentLang].mobile}</span> <span class="value"><a href="tel:${machine.sellerMobile}" class="call-link">${machine.sellerMobile}</a></span></div>
                     </div>
                 `;
                 grid.appendChild(card);
