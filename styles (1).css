@@ -147,6 +147,9 @@ nav.main-nav a:hover {
     object-fit: contain;
     max-height: 150px;
     transition: opacity 0.5s;
+    position: relative;   /* allows proper click handling */
+    z-index: 1;           /* keeps image above arrows overlay */
+    cursor: pointer;      /* shows it is clickable */
 }
 
 .carousel-prev, .carousel-next {
@@ -405,11 +408,14 @@ footer a:hover {
     }
 
 .image-lightbox {
-    display: none;
+    display: none;                 /* hidden by default */
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.9);
-    z-index: 9999;
+    z-index: 99999;
+
+    /* FLEX layout MUST be defined */
+    display: flex;
     align-items: center;
     justify-content: center;
 }
