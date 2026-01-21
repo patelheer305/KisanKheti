@@ -1,11 +1,12 @@
 {
+  "id": "/",
   "name": "KisanKheti",
   "short_name": "KisanKheti",
+  "description": "Buy Allow Sell Used Farm Machinery in India",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2e7d32",
-  "description": "Buy Allow Sell Used Farm Machinery in India",
   "icons": [
     {
       "src": "/icons/icon-192.png",
