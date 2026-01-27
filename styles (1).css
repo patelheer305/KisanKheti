@@ -406,3 +406,44 @@ footer a:hover {
         font-size: 16px;
     }
     }
+.legal-container {
+    max-width: 900px;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    border: 1px solid #FFE6E6;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.legal-container h1 {
+    color: #D70000;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.legal-container h2 {
+    color: #A30000;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.legal-container p,
+.legal-container li {
+    font-size: 0.95rem;
+    color: #333333;
+    line-height: 1.7;
+}
+
+.legal-container ul {
+    padding-left: 1.2rem;
+}
+
+.legal-updated {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 1rem;
+}
